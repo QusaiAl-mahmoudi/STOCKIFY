@@ -30,18 +30,33 @@
 
 ```text
 src/
-├── Components/
+├── assets/
+│   ├── images/
+│   └── icons/
+├── components/
 │   ├── common/
+│   │   ├── Alert.jsx
+│   │   ├── Badge.jsx
 │   │   ├── Button.jsx
+│   │   ├── Icon.jsx
 │   │   ├── Input.jsx
+│   │   ├── Navbar.jsx
 │   │   ├── PageHeader.jsx
+│   │   ├── StateItem.jsx
 │   │   └── Table.jsx
-│   ├── Alert.jsx
-│   ├── Navbar.jsx
+│   ├── dashboard/
+│   │   ├── StatCard.jsx
+│   │   └── StockChart.jsx
 │   ├── ProductForm.jsx
-│   ├── StatCard.jsx
-│   └── StockChart.jsx
+│   └── SalesForm.jsx
+├── context/
+│   ├── StockContext.jsx
+│   └── ThemeContext.jsx
+├── data/
+│   ├── products.json
+│   └── sales.json
 ├── hooks/
+│   ├── useLocalStorage.js
 │   ├── useProducts.js
 │   └── useSales.js
 ├── pages/
@@ -54,8 +69,7 @@ src/
 ├── styles/
 │   └── main.css
 ├── App.jsx
-└── index.js
-
+└── main.jsx
 ```
 
 
