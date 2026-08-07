@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+```markdown
+# STOCKIFY 📦
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+تطبيق React لبناء نظام إدارة مخازن ومبيعات (SPA) متكامل ومحترف، يتيح متابعة المخزون، تنفيذ الفواتير، وتحليل البيانات الإحصائية بشكل مباشر مع إدارة النسخ الاحتياطية.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## ✨ المميزات الرئيسية
 
-### `npm start`
+* **إدارة المخازن (CRUD):** إضافة، تعديل، وحذف المنتجات مع احتساب الضرائب، الإعلانات، والخصومات تلقائياً.
+* **البحث والتصفية اللحظية:** تصفية المنتجات مباشرة حسب **الاسم (Title)** أو **الفئة (Category)**.
+* **النسخ الاحتياطي (JSON Backup):** تصدير بيانات المخزن إلى ملف `JSON` خارجي واسترجاعها بضغطة زر لحماية البيانات من الضياع.
+* **الحفظ التلقائي المحلي:** إدارة المبيعات والمنتجات وحفظ التغييرات فورياً عبر `LocalStorage`.
+* **كاونتر المبيعات والسلة:** إضافة المنتجات عبر معرّف المنتج (ID)، مع تحديث السلة وخصم الكميات تلقائياً من المخزن.
+* **لوحة التحليلات والإحصائيات:** عرض إجمالي قيم المخزون، ورسم بياني تفاعلي يوضح توزيع المنتجات وتنبيهات بالنواقص.
+* **المظهر المخصص (Dark/Light Mode):** دعم الوضع الداكن والفاتح مع حفظ تفضيلات المستخدم تلقائياً.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ التقنيات المستخدمة
 
-### `npm test`
+**React** | **React Router** | **Custom Hooks** | **Context API** | **Chart.js** | **FontAwesome / SVG** | **CSS Variables**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 📂 هيكلية المشروع (Project Structure)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```text
+src/
+├── Components/
+│   ├── common/
+│   │   ├── Button.jsx        # مكون الزر إعادة الاستخدام
+│   │   ├── Input.jsx         # مكون إدخال النصوص والبيانات
+│   │   ├── PageHeader.jsx    # ترويسة الصفحة والعناوين
+│   │   └── Table.jsx         # مكون الجدول التفاعلي
+│   ├── Alert.jsx             # التنبيهات والرسائل الموقوتة
+│   ├── Navbar.jsx            # شريط التنقل العلوي وتغيير المظهر
+│   ├── ProductForm.jsx       # نموذج إضافة وتعديل المنتجات
+│   ├── StatCard.jsx          # كروت الإحصائيات السريعة
+│   └── StockChart.jsx        # الرسم البياني للمخزون
+├── hooks/
+│   ├── useProducts.js        # إدارة عمليات المنتجات والبحث
+│   └── useSales.js           # إدارة كاونتر المبيعات والسلة
+├── pages/
+│   ├── HomePage.jsx          # الواجهة الرئيسية
+│   ├── ManagementPage.jsx    # لوحة الإدارة والتحليلات
+│   ├── SalesPage.jsx         # صفحة كاونتر المبيعات
+│   └── StoresPage.jsx        # صفحة إدارة المخازن والمنتجات
+├── services/
+│   └── storageService.js     # خدمة الحفظ وتصدير/استيراد JSON
+├── styles/
+│   └── main.css              # ملف التنسيقات الرئيسي والأنماط
+├── App.jsx                   # إعداد المسارات التوجيهية (Routes)
+└── index.js                  # نقطة الانطلاق الرئيسية للتطبيق
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🚀 التشغيل المحلي
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+# 1. استنساخ المستودع والدخول للمجلد
+git clone [https://github.com/YOUR_USERNAME/STOCKIFY.git](https://github.com/QusaiAl-mahmoudi/STOCKIFY.git)
+cd STOCKIFY
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# 2. تثبيت الحزم والمكتبات
+npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# 3. تشغيل المشروع في بيئة التطوير
+npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 💾 إدارة النسخ الاحتياطية (JSON)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+تتيح لك صفحة **المخازن (StoresPage)** خيارين للتحكم بالبيانات:
 
-### Code Splitting
+1. **📥 تصدير نسخة احتياطية:** تنزيل ملف `stockify_backup_YYYY-MM-DD.json` يحتوي على كامل المنتجات.
+2. **📤 استرجاع نسخة احتياطية:** رفع ملف JSON سابق لإعادة شحن بيانات المخزن تلقائياً.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
 
-### Analyzing the Bundle Size
+يمكنك نسخ هذا المحتوى ووضعه مباشرة داخل ملف `README.md` ثم رفعه إلى GitHub.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
