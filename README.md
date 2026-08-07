@@ -20,7 +20,7 @@
 
 ## 🛠️ التقنيات المستخدمة
 
-`React` | `React Router` | `Context API` | `Custom Hooks` | `Chart.js` | `CSS Variables`
+`React` | `Context API` | `Custom Hooks` | `Chart.js` | `CSS Variables`
 
 ---
 
