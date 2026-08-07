@@ -1,11 +1,10 @@
 import { useState } from "react";
+import { storageService } from "../services/storageService";
 
 export function useSales() {
-  const [dataProducts, setDataProducts] = useState(() => {
-    const saved = localStorage.getItem("products");
-    return saved ? JSON.parse(saved) : [];
-  });
-
+  const [dataProducts, setDataProducts] = useState(() =>
+    storageService.getProducts(),
+  );
   const [cart, setCart] = useState([]);
   const [prodId, setProdId] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -115,13 +114,28 @@ export function useSales() {
     }
 
     const updatedProducts = [...dataProducts];
+    const newSalesRecords = [];
+
     cart.forEach((item) => {
       updatedProducts[item.index].count =
         parseInt(updatedProducts[item.index].count, 10) - item.qty;
+
+      newSalesRecords.push({
+        saleId: Date.now(),
+        productId: item.id,
+        title: item.title,
+        qty: item.qty,
+        total: item.total,
+        date: new Date().toISOString().split("T")[0],
+      });
     });
 
     setDataProducts(updatedProducts);
-    localStorage.setItem("products", JSON.stringify(updatedProducts));
+    storageService.saveProducts(updatedProducts);
+
+    const currentSales = storageService.getSales();
+    storageService.saveSales([...currentSales, ...newSalesRecords]);
+
     setCart([]);
     showAlert("Sale completed successfully! Stock updated.", "#10b981");
   };

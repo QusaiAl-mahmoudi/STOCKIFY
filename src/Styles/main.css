@@ -50,31 +50,36 @@ header {
 }
 
 .header_container {
-    width: 88%;
-    max-width: 1200px;
+    width: 90%;
+    max-width: 1300px;
     margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 0;
+    padding: 14px 0;
 }
 
 .logo {
-    font-size: 1.4rem;
+    font-size: 2.2rem;
+    /* تكبير اسم الموقع */
     font-weight: 800;
     color: var(--text-color);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
-.logo span {
+.logo span,
+.logo svg {
+    font-size: 2.4rem;
+    /* تكبير أيقونة اللوجو */
     color: var(--primary-color);
 }
 
 .navbar {
     display: flex;
-    gap: 15px;
+    align-items: center;
+    gap: 12px;
 }
 
 .nav_link {
@@ -82,14 +87,21 @@ header {
     border: none;
     cursor: pointer;
     color: var(--text-color);
-    font-weight: 500;
-    font-size: 0.95rem;
-    padding: 8px 16px;
+    font-weight: 600;
+    font-size: 1.25rem;
+    /* حجم ممتاز وواضح للنصوص */
+    padding: 10px 22px;
     border-radius: 8px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     transition: var(--transition);
+}
+
+/* تكبير الأيقونات داخل الأزرار */
+.nav_link svg,
+.nav_link i {
+    font-size: 1.4rem;
 }
 
 .nav_link:hover {
@@ -103,24 +115,27 @@ header {
 }
 
 .dark-mode-btn {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    /* تكبير زر الثيم */
+    height: 48px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
+    /* تكبير أيقونة القمر/الشمس */
     background: var(--input-focus-bg);
     color: var(--text-color);
     border: 1px solid var(--table-border);
     cursor: pointer;
     transition: var(--transition);
+    margin-right: 10px;
 }
 
 .dark-mode-btn:hover {
     background: var(--primary-color);
     color: #ffffff;
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 /* --- 3. الصفحة الرئيسية (HomePage) --- */
@@ -154,7 +169,7 @@ header {
 }
 
 .home-content p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--text-color);
     opacity: 0.8;
     line-height: 1.7;

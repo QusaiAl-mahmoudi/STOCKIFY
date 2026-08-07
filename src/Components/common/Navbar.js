@@ -1,28 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import Icon from "./Icon";
+import { ThemeContext } from "../../context/ThemeContext";
 
 function Navbar({ currentPage, setCurrentPage }) {
-  const [isDark, setIsDark] = useState(() => {
-    const savedMode = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
-    return savedMode === "dark" || (!savedMode && prefersDark);
-  });
-
-  useEffect(() => {
-    if (isDark) {
-      document.body.classList.add("dark-mode");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.body.classList.remove("dark-mode");
-      localStorage.setItem("theme", "light");
-    }
-  }, [isDark]);
-
-  const toggleDarkMode = () => {
-    setIsDark((prevMode) => !prevMode);
-  };
+  const { isDark, toggleTheme } = useContext(ThemeContext);
 
   return (
     <header>
@@ -73,7 +54,7 @@ function Navbar({ currentPage, setCurrentPage }) {
             id="dark-mode-toggle"
             className="dark-mode-btn"
             title="تغيير المظهر"
-            onClick={toggleDarkMode}
+            onClick={toggleTheme}
           >
             <Icon name={isDark ? "sun" : "moon"} />
           </button>

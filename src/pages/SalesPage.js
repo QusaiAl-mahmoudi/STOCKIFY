@@ -1,9 +1,9 @@
 import React from "react";
-import PageHeader from "../Components/PageHeader";
-import Table from "../Components/Table";
-import Button from "../Components/Button";
+import PageHeader from "../Components/common/PageHeader";
+import Table from "../Components/common/Table";
+import Button from "../Components/common/Button";
 import SalesForm from "../Components/SalesForm";
-import { useSales } from "../hooks/userSales";
+import { useSales } from "../hooks/useSales";
 
 const CART_HEADERS = [
   "ID",

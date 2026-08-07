@@ -1,9 +1,10 @@
-import React, { useState, useMemo } from "react";
-import PageHeader from "../Components/PageHeader";
-import StatCard from "../Components/StatCard";
-import Table from "../Components/Table";
-import Badge from "../Components/Badge"; // تصحيح الخطأ الإملائي في اسم المكون
-import StockChart from "../Components/StockChart";
+import React, { useMemo } from "react";
+import PageHeader from "../Components/common/PageHeader";
+import Table from "../Components/common/Table";
+import Badge from "../Components/common/Badge";
+import StatCard from "../Components/dashboard/StatCard";
+import StockChart from "../Components/dashboard/StockChart";
+import { storageService } from "../services/storageService";
 
 const ALERT_TABLE_HEADERS = [
   "اسم المنتج",
@@ -13,12 +14,8 @@ const ALERT_TABLE_HEADERS = [
 ];
 
 function ManagementPage() {
-  const [dataProducts] = useState(() => {
-    const saved = localStorage.getItem("products");
-    return saved ? JSON.parse(saved) : [];
-  });
+  const dataProducts = storageService.getProducts();
 
-  // تحسين الأداء عبر useMemo لحساب الإحصائيات مرة واحدة فقط
   const { totalStock, totalValue, criticalProducts } = useMemo(() => {
     let stockSum = 0;
     let valueSum = 0;
@@ -50,7 +47,6 @@ function ManagementPage() {
         subtitle="نسبة توزيع المنتجات الإجمالية داخل المخازن"
       />
 
-      {/* كروت الإحصائيات */}
       <div
         className="stats-container"
         style={{
@@ -77,12 +73,10 @@ function ManagementPage() {
         />
       </div>
 
-      {/* الرسم البياني للمخزون */}
       <div style={{ marginBottom: "30px" }}>
         <StockChart products={dataProducts} totalStock={totalStock} />
       </div>
 
-      {/* جدول تنبيهات المخزون */}
       <div className="alert-box mb-30">
         <h3
           style={{

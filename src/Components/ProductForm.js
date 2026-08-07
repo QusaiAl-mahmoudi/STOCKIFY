@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Input from "./Input";
-import Button from "./Button";
+import Input from "./common/Input";
+import Button from "./common/Button";
 
 const initialForm = {
   title: "",
@@ -58,25 +58,67 @@ function ProductForm({ onSubmit, mood, editData }) {
 
   return (
     <form onSubmit={handleSubmit} className="inputs">
-      <Input id="title" placeholder="Title" value={formData.title} onChange={handleChange} />
-      
+      <Input
+        id="title"
+        placeholder="Title"
+        value={formData.title}
+        onChange={handleChange}
+      />
+
       <div className="price">
-        <Input type="number" id="price" placeholder="Price" value={formData.price} onChange={handleChange} />
-        <Input type="number" id="taxes" placeholder="Taxes" value={formData.taxes} onChange={handleChange} />
-        <Input type="number" id="ads" placeholder="Ads" value={formData.ads} onChange={handleChange} />
-        <Input type="number" id="discount" placeholder="Discount" value={formData.discount} onChange={handleChange} />
+        <Input
+          type="number"
+          id="price"
+          placeholder="Price"
+          value={formData.price}
+          onChange={handleChange}
+        />
+        <Input
+          type="number"
+          id="taxes"
+          placeholder="Taxes"
+          value={formData.taxes}
+          onChange={handleChange}
+        />
+        <Input
+          type="number"
+          id="ads"
+          placeholder="Ads"
+          value={formData.ads}
+          onChange={handleChange}
+        />
+        <Input
+          type="number"
+          id="discount"
+          placeholder="Discount"
+          value={formData.discount}
+          onChange={handleChange}
+        />
         <small id="total" style={{ background: total ? "#040" : "#9b0101" }}>
           {total}
         </small>
       </div>
 
       {mood === "Create" && (
-        <Input type="number" id="count" placeholder="Count" value={formData.count} onChange={handleChange} />
+        <Input
+          type="number"
+          id="count"
+          placeholder="Count"
+          value={formData.count}
+          onChange={handleChange}
+        />
       )}
 
-      <Input id="category" placeholder="Category" value={formData.category} onChange={handleChange} />
-      
-      <Button type="submit" id="submit">{mood}</Button>
+      <Input
+        id="category"
+        placeholder="Category"
+        value={formData.category}
+        onChange={handleChange}
+      />
+
+      <Button type="submit" id="submit">
+        {mood}
+      </Button>
     </form>
   );
 }

@@ -1,10 +1,11 @@
-import React from "react";
-import PageHeader from "../Components/PageHeader";
-import Table from "../Components/Table";
-import Button from "../Components/Button";
-import Input from "../Components/Input";
+import React, { useRef } from "react";
+import PageHeader from "../Components/common/PageHeader";
+import Table from "../Components/common/Table";
+import Button from "../Components/common/Button";
+import Input from "../Components/common/Input";
 import ProductForm from "../Components/ProductForm";
-import { useProducts } from "../hooks/UserProducts";
+import { useProducts } from "../hooks/useProducts";
+import { exportBackupJSON, importBackupJSON } from "../services/storageService";
 
 const TABLE_HEADERS = [
   "id",
@@ -35,12 +36,24 @@ function StoresPage() {
     addOrUpdateProduct,
     deleteProduct,
     deleteAllProducts,
+    setProducts,
   } = useProducts();
+
+  const fileInputRef = useRef(null);
 
   const handleEditClick = (index) => {
     setMood("Update");
     setEditIndex(index);
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      importBackupJSON(file, (importedData) => {
+        setProducts(importedData);
+      });
+    }
   };
 
   return (
@@ -49,6 +62,33 @@ function StoresPage() {
         title="Stockify"
         subtitle="نظام إدارة المنتجات والمخازن بكل احترافية"
       />
+
+      {/* أزرار استيراد وتصدير النسخ الاحتياطية */}
+      <div
+        className="backup-actions"
+        style={{
+          display: "flex",
+          gap: "10px",
+          marginBottom: "20px",
+          justifyContent: "flex-end",
+        }}
+      >
+        <Button onClick={exportBackupJSON}>
+          📥 تصدير نسخة احتياطية (JSON)
+        </Button>
+
+        <Button onClick={() => fileInputRef.current.click()}>
+          📤 استرجاع نسخة احتياطية
+        </Button>
+
+        <input
+          type="file"
+          ref={fileInputRef}
+          onChange={handleFileChange}
+          accept=".json"
+          style={{ display: "none" }}
+        />
+      </div>
 
       <ProductForm
         onSubmit={addOrUpdateProduct}
@@ -84,7 +124,7 @@ function StoresPage() {
 
         <Table headers={TABLE_HEADERS}>
           {filteredProducts.map((prod, i) => (
-            <tr key={i}>
+            <tr key={prod.id || i}>
               <td>{i + 1}</td>
               <td>{prod.title}</td>
               <td>{prod.price}</td>

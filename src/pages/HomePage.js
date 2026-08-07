@@ -1,6 +1,6 @@
 import React from "react";
-import StatItem from "../Components/StateItem";
-
+import StateItem from "../Components/common/StateItem";
+import dashboardImage from "../assets/images/image_wrapper.avif";
 function HomePage({ setCurrentPage }) {
   return (
     <div>
@@ -22,7 +22,8 @@ function HomePage({ setCurrentPage }) {
               <a
                 href="#management"
                 className="btn-primary-custom"
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
                   setCurrentPage("management");
                 }}
               >
@@ -31,15 +32,15 @@ function HomePage({ setCurrentPage }) {
             </div>
 
             <div className="home-stats">
-              <StatItem value="+10k" label="منتج مُدار" />
-              <StatItem value="99.9%" label="دقة وسرعة" />
-              <StatItem value="24/7" label="جاهزية واستقرار" />
+              <StateItem value="+10k" label="منتج مُدار" />
+              <StateItem value="99.9%" label="دقة وسرعة" />
+              <StateItem value="24/7" label="جاهزية واستقرار" />
             </div>
           </div>
 
           <div className="home-image">
             <div className="image-wrapper">
-              <img src="/image_wrapper.avif" alt="Stockify Dashboard UI" />
+              <img src={dashboardImage} alt="Stockify Dashboard UI" />
             </div>
           </div>
         </div>

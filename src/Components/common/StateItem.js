@@ -1,6 +1,6 @@
 import React from "react";
 
-function StatItem({ value, label }) {
+function StateItem({ value, label }) {
   return (
     <div className="stat-item">
       <h3>{value}</h3>
@@ -9,4 +9,4 @@ function StatItem({ value, label }) {
   );
 }
 
-export default StatItem;
+export default StateItem;

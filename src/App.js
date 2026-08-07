@@ -1,37 +1,34 @@
 import React, { useState } from "react";
-import "./style.css";
+import "./Styles/main.css";
 import StoresPage from "./pages/StoresPage";
 import SalesPage from "./pages/SalesPage";
-import ManagementPage from "./pages/ManagementPage.js";
+import ManagementPage from "./pages/ManagementPage";
 import HomePage from "./pages/HomePage";
-import Navbar from "./Components/Navbar";
+import Navbar from "./Components/common/Navbar";
+
+import { ThemeProvider } from "./context/ThemeContext";
+import { StockProvider } from "./context/StockContext";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
+
   return (
-    <div className="app-container">
-      {/*    
-      <Router>
-      
-        <Routes>
-           <Route path="/" element={<HomePage />} />
-          <Route path="/stores" element={<StoresPage />} />
-          <Route path="/sales" element={<SalesPage />} />
-          <Route path="/management" element={<ManagementPage />} />
-        
-        </Routes>
-       
-      </Router> */}
+    <ThemeProvider>
+      <StockProvider>
+        <div className="app-container">
+          <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
-      <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
-
-      <main className="main-content">
-        {currentPage === "stores" && <StoresPage />}
-        {currentPage === "sales" && <SalesPage />}
-        {currentPage === "management" && <ManagementPage />}
-        {currentPage === "home" && <HomePage setCurrentPage={setCurrentPage} />}
-      </main>
-    </div>
+          <main className="main-content">
+            {currentPage === "stores" && <StoresPage />}
+            {currentPage === "sales" && <SalesPage />}
+            {currentPage === "management" && <ManagementPage />}
+            {currentPage === "home" && (
+              <HomePage setCurrentPage={setCurrentPage} />
+            )}
+          </main>
+        </div>
+      </StockProvider>
+    </ThemeProvider>
   );
 }
 
