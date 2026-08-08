@@ -73,7 +73,7 @@ src/
 ```
 
 
-##🚀 التشغيل المحلي
+🚀 التشغيل المحلي
 استنساخ المستودع والدخول للمجلد:
 ```
 git clone https://github.com/QusaiAl-mahmoudi/STOCKIFY.git
