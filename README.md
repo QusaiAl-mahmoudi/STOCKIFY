@@ -76,7 +76,7 @@ src/
 ##🚀 التشغيل المحلي
 استنساخ المستودع والدخول للمجلد:
 ```
-git clone [https://github.com/QusaiAl-mahmoudi/STOCKIFY.git](https://github.com/YOUR_USERNAME/STOCKIFY.git)
+git clone https://github.com/QusaiAl-mahmoudi/STOCKIFY.git
 cd STOCKIFY
 ```
 تثبيت الحزم والمكتبات:
