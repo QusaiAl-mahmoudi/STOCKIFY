@@ -61,7 +61,6 @@ header {
 
 .logo {
     font-size: 2.2rem;
-    /* تكبير اسم الموقع */
     font-weight: 800;
     color: var(--text-color);
     display: flex;
@@ -72,7 +71,6 @@ header {
 .logo span,
 .logo svg {
     font-size: 2.4rem;
-    /* تكبير أيقونة اللوجو */
     color: var(--primary-color);
 }
 
@@ -89,7 +87,6 @@ header {
     color: var(--text-color);
     font-weight: 600;
     font-size: 1.25rem;
-    /* حجم ممتاز وواضح للنصوص */
     padding: 10px 22px;
     border-radius: 8px;
     display: flex;
@@ -98,7 +95,6 @@ header {
     transition: var(--transition);
 }
 
-/* تكبير الأيقونات داخل الأزرار */
 .nav_link svg,
 .nav_link i {
     font-size: 1.4rem;
@@ -116,14 +112,12 @@ header {
 
 .dark-mode-btn {
     width: 48px;
-    /* تكبير زر الثيم */
     height: 48px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.4rem;
-    /* تكبير أيقونة القمر/الشمس */
     background: var(--input-focus-bg);
     color: var(--text-color);
     border: 1px solid var(--table-border);
